@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "build/web",
+		"module": "es2015",
+		"target": "es6",
+		"lib": ["es2017", "es7", "dom", "esnext.asynciterable"],
+		"sourceMap": true,
+		"allowJs": true,
+		"jsx": "react",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": false,
+		"strictNullChecks": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"noUnusedLocals": false,
+		"experimentalDecorators": true,
+		"skipLibCheck": true,
+		"strict": true
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"server",
+		"scripts",
+		"acceptance-tests",
+		"dist",
+		"webpack",
+		"jest",
+		"src/setupTests.ts"
+	]
+}
