@@ -41,7 +41,6 @@ app.get('/db/refresh', (req, res) => {
         }
         if (error) {
             console.error(error.message);
-            // consume response data to free up memory
             response.resume();
             return;
         }
@@ -53,14 +52,12 @@ app.get('/db/refresh', (req, res) => {
                 if (err) {
                     return console.error(err);
                 }
-                console.log('RESULT5:', JSON.stringify(result));
                 let meme_refs = [];
                 for (let i = 0; i < result.ListBucketResult.Contents.length; i++) {
                     const file = result.ListBucketResult.Contents[i].Key[0];
                     meme_refs.push(file);
                 }
                 db_1.default.refreshMemeDB(meme_refs, () => {
-                    console.log('Everything inserted into DB');
                     res.status(200).send('OK');
                 });
             });
