@@ -27,7 +27,7 @@ app.get('/memes/:width/:height', (req, res) => {
     });
 });
 app.get('/db/refresh', (req, res) => {
-    http.get('http://s3.amazonaws.com/placememe-images-bucket-3245/', (response) => {
+    http.get(BUCKET, (response) => {
         const { statusCode } = response;
         const contentType = response.headers['content-type'];
         let error;
@@ -52,7 +52,7 @@ app.get('/db/refresh', (req, res) => {
                 if (err) {
                     return console.error(err);
                 }
-                let meme_refs = [];
+                const meme_refs = [];
                 for (let i = 0; i < result.ListBucketResult.Contents.length; i++) {
                     const file = result.ListBucketResult.Contents[i].Key[0];
                     meme_refs.push(file);

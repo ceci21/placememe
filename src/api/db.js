@@ -1,7 +1,5 @@
-import * as http from 'http';
 import * as sqlite3 from 'sqlite3';
 import images from './images';
-import * as fetch from 'node-fetch';
 
 const BUCKET = 'http://s3.amazonaws.com/placememe-images-bucket-3245/';
 

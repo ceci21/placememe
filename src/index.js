@@ -1,6 +1,4 @@
 import * as express from 'express';
-import * as fetch from 'node-fetch';
-import * as Jimp from 'jimp';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as xml2js from 'xml2js';
@@ -37,7 +35,7 @@ app.get('/memes/:width/:height', (req, res) => {
 
 app.get('/db/refresh', (req, res) => {
 
-  http.get('http://s3.amazonaws.com/placememe-images-bucket-3245/', (response) => {
+  http.get(BUCKET, (response) => {
     const { statusCode } = response;
     const contentType = response.headers['content-type'];
 
@@ -45,7 +43,7 @@ app.get('/db/refresh', (req, res) => {
     if (statusCode !== 200) {
       error = new Error('Request Failed.\n' +
         `Status Code: ${statusCode}`);
-    } else if (!/^application\/xml/.test(contentType as any)) {
+    } else if (!/^application\/xml/.test(contentType)) {
       error = new Error('Invalid content-type.\n' +
         `Expected application/xml but received ${contentType}`);
     }
@@ -65,7 +63,7 @@ app.get('/db/refresh', (req, res) => {
           return console.error(err);
         }
 
-        let meme_refs: string[] = [];
+        const meme_refs = [];
         for (let i = 0; i < result.ListBucketResult.Contents.length; i++) {
           const file = result.ListBucketResult.Contents[i].Key[0];
           meme_refs.push(file);
