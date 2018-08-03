@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./build/web/index.js",
+    "start": "npm run build && node ./build/web/index.js",
     "build": "tsc -w"
   },
   "author": "",
