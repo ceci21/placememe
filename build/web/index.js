@@ -58,7 +58,7 @@ app.get('/db/refresh', (req, res) => {
                     meme_refs.push(file);
                 }
                 db_1.default.refreshMemeDB(meme_refs, () => {
-                    res.status(200).send('OK');
+                    res.status(200).send('Database Updated');
                 });
             });
         });

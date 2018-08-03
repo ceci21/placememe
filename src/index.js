@@ -69,7 +69,7 @@ app.get('/db/refresh', (req, res) => {
           meme_refs.push(file);
         }
         db.refreshMemeDB(meme_refs, () => {
-          res.status(200).send('OK');
+          res.status(200).send('Database Updated');
         });
       });
     });

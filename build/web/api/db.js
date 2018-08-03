@@ -11,10 +11,10 @@ const db = new sqlite3.Database('./src/db/memes.db', (err) => {
 });
 const getMeme = (width, height, callback) => {
     db.get(`
-    SELECT * FROM memes 
-    WHERE width >= $width
-    AND height >= $height
-    ORDER BY id ASC LIMIT 1
+      SELECT * FROM memes 
+      WHERE width >= $width
+      AND height >= $height
+      ORDER BY width ASC LIMIT 1
   `, {
         $width: width,
         $height: height

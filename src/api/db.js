@@ -10,12 +10,14 @@ const db = new sqlite3.Database('./src/db/memes.db', (err) => {
   console.log('Connected to memes database...');
 });
 
+
+
 const getMeme = (width, height, callback) => {
   db.get(`
-    SELECT * FROM memes 
-    WHERE width >= $width
-    AND height >= $height
-    ORDER BY id ASC LIMIT 1
+      SELECT * FROM memes 
+      WHERE width >= $width
+      AND height >= $height
+      ORDER BY width ASC LIMIT 1
   `, { 
     $width: width,
     $height: height
@@ -41,6 +43,7 @@ const refreshMemeDB = (meme_refs, callback) => {
   for (let i = 0; i < meme_refs.length; i++) {
 
     const image_url = BUCKET + meme_refs[i];
+
     images.getImageData(image_url, (result) => {
       db.run(`
             INSERT INTO memes (meme_ref, width, height) 
