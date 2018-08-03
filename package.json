@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && node ./build/web/index.js",
-    "build": "tsc -w"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
