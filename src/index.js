@@ -9,7 +9,6 @@ import images from './api/images';
 const app = express();
 
 const BUCKET = 'http://s3.amazonaws.com/placememe-images-bucket-3245/';
-const PORT = process.env.PORT || 3000;
 
 app.use(express.static('src/public'));
 app.use(bodyParser.json());
@@ -94,6 +93,6 @@ app.get('/:width/:height', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log('Listening on port ' + PORT + '...');
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Listening...');
 });
